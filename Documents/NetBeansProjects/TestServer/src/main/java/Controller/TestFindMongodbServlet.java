@@ -1,0 +1,113 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Controller;
+import com.mongodb.DBCollection;
+import com.mongodb.DBObject;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import org.bson.Document;
+import java.util.Iterator;
+import com.mongodb.client.FindIterable;
+import com.mongodb.DB;
+
+/**
+ *
+ * @author Dell64
+ */
+@WebServlet(name = "TestFindMongodbServlet", urlPatterns = {"/TestFindMongodb"})
+public class TestFindMongodbServlet extends HttpServlet {
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+      
+         MongoClientURI uri = new MongoClientURI("mongodb://user-together-3:123456789@13.229.248.9/?authSource=togetherDb");
+        MongoClient mongo = new MongoClient(uri);
+//        MongoDatabase database = mongo.getDatabase("togetherDb");
+//
+//        // Retrieving a collection
+//        MongoCollection<Document> collection = database.getCollection("Homestays");
+//        
+//        
+//           // Getting the iterable object 
+//      FindIterable<Document> iterDoc = collection.find(); 
+//      int i = 1; 
+//
+//      // Getting the iterator 
+//      Iterator it = iterDoc.iterator(); 
+//    
+//      while (it.hasNext()) {  
+//          
+//         System.out.println(it.next()+"++++++++++++++++++++++++");  
+//         
+//         
+//      i++; 
+//      }
+DB db = mongo.getDB("togetherDb");
+DBCollection coll = db.getCollection("Homestays");
+ DBObject myDoc = coll.findOne(3);
+   System.out.println(myDoc+"+++++++++++++++++++++++++");
+        
+
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
+}
