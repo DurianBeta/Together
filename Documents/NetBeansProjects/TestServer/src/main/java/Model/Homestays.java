@@ -36,7 +36,6 @@ public class Homestays {
     private String postcost;
     private String detail;
     private Object activityPricing;
-    private Object[] room; 
     private Object[] buildings;
     private Object ownerDetail;
     private Object souviner;
@@ -47,7 +46,7 @@ public class Homestays {
         
     }
 
-    public Homestays(ObjectId id, String name, String coordinates, String address, String postcost, String detail, Object activityPricing, Object[] room, Object[] buildings, Object ownerDetail, Object souviner, Object contact, Object[] history) {
+    public Homestays(ObjectId id, String name, String coordinates, String address, String postcost, String detail, Object activityPricing, Object[] buildings, Object ownerDetail, Object souviner, Object contact, Object[] history) {
         this.id = id;
         this.name = name;
         this.coordinates = coordinates;
@@ -55,7 +54,6 @@ public class Homestays {
         this.postcost = postcost;
         this.detail = detail;
         this.activityPricing = activityPricing;
-        this.room = room;
         this.buildings = buildings;
         this.ownerDetail = ownerDetail;
         this.souviner = souviner;
@@ -117,14 +115,6 @@ public class Homestays {
 
     public void setActivityPricing(Object activityPricing) {
         this.activityPricing = activityPricing;
-    }
-
-    public Object[] getRoom() {
-        return room;
-    }
-
-    public void setRoom(Object[] room) {
-        this.room = room;
     }
 
     public Object[] getBuildings() {
