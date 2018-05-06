@@ -67,6 +67,8 @@ public class testReservationsServlet extends HttpServlet {
                 .append("Age", age)
                 .append("More", moreInformation);
         collection.insertOne(document);
+        
+        
 
         getServletContext().getRequestDispatcher("/testbootstrap.html").forward(request, response);
 

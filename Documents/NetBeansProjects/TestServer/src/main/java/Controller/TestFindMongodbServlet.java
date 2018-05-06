@@ -67,6 +67,8 @@ DB db = mongo.getDB("togetherDb");
 DBCollection coll = db.getCollection("Homestays");
  DBObject myDoc = coll.findOne(3);
    System.out.println(myDoc+"+++++++++++++++++++++++++");
+   
+   
         
 
     }
